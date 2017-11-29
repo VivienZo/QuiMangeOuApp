@@ -1,0 +1,9 @@
+<h2>Propositions</h2>
+
+<ul class="propositions">
+  <li *ngFor="let proposition of propositions">
+      <a routerLink="/detail/{{proposition.slug}}">
+        <span class="badge">{{proposition.date | date:'dd/MM/yyyy'}}</span> {{proposition.resto}}
+      </a>
+  </li>
+</ul>

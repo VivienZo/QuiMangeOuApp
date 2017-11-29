@@ -1,0 +1,25 @@
+import { Component, OnInit } from '@angular/core';
+import { Proposition } from '../proposition';
+import { PropositionService } from '../proposition.service';
+
+@Component({
+  selector: 'app-propositions',
+  templateUrl: './propositions.component.html',
+  styleUrls: ['./propositions.component.css']
+})
+export class PropositionsComponent implements OnInit {
+
+  propositions: Proposition[];
+
+  constructor(private propositionService: PropositionService) { }
+
+  ngOnInit() {
+    this.getPropositions();
+  }
+
+  getPropositions(): void {
+    this.propositionService.getPropositions()
+      .subscribe(propositions => this.propositions = propositions);
+  }
+
+}

@@ -1,0 +1,16 @@
+<div *ngIf="proposition">
+  <h2>Détails de la proposition {{ proposition.slug }}</h2>
+  <div><span>id: </span>{{proposition.id}}</div>
+  <div><span>slug: </span>{{proposition.slug}}</div>
+  <div><span>date: </span>{{proposition.date | date:'dd/MM/yyyy'}}</div>
+  <div><span>resto: </span>{{proposition.resto}}</div>
+  <div><span>participants: </span>{{proposition.participants}}</div>
+  <div><span>potentielsParticipants: </span>{{proposition.potentielsParticipants}}</div>
+  <div><span>nonParticipants: </span>{{proposition.nonParticipants}}</div>
+  <div>
+    <label>Nom du resto:
+      <input [(ngModel)]="proposition.resto" placeholder="Nom du resto">
+    </label>
+  </div>
+</div>
+<button (click)="goBack()" class="clear">Retour</button>
