@@ -5,5 +5,17 @@
       <a routerLink="/detail/{{proposition.id}}">
         <span class="badge">{{proposition.date | date:'dd/MM/yyyy'}}</span> {{proposition.resto}}
       </a>
+      <button class="delete" title="delete proposition" (click)="delete(proposition)">x</button>
   </li>
 </ul>
+
+<div>
+  <h4>Ajouter une proposition</h4>
+  <label>Nom du resto :
+    <input #resto />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(resto.value); resto.value=''">
+    Valider
+  </button>
+</div>

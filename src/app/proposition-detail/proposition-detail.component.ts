@@ -29,6 +29,11 @@ export class PropositionDetailComponent implements OnInit {
       .subscribe(proposition => this.proposition = proposition);
   }
 
+  save(): void {
+    this.propositionService.updateProposition(this.proposition)
+      .subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }

@@ -22,4 +22,18 @@ export class PropositionsComponent implements OnInit {
       .subscribe(propositions => this.propositions = propositions);
   }
 
+  add(resto: string): void {
+    resto = resto.trim();
+    if (!resto) { return; }
+    this.propositionService.addProposition({ resto } as Proposition)
+    .subscribe(proposition => {
+      this.propositions.push(proposition);
+    });
+  }
+
+  delete(proposition: Proposition): void {
+    this.propositions = this.propositions.filter(p => p !== proposition);
+    this.propositionService.deleteProposition(proposition).subscribe();
+  }
+
 }

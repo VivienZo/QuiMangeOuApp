@@ -11,6 +11,9 @@ import { MessageService } from './message.service';
 export class PropositionService {
 
   private propositionsUrl = 'api/v1/propositions';  // URL to web api
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient,
@@ -33,6 +36,33 @@ export class PropositionService {
         tap(_ => this.log(`fetched proposition id=${id}`)),
         catchError(this.handleError<Proposition>(`getProposition id=${id}`))
       );
+  }
+
+  /** PUT: update the proposition on the server */
+  updateProposition(prop: Proposition): Observable<any> {
+    return this.http.put(this.propositionsUrl, prop, this.httpOptions).pipe(
+      tap(_ => this.log(`updated proposition id=${prop.id}`)),
+      catchError(this.handleError<any>('updateProposition'))
+    );
+  }
+
+  /** POST: add a new proposition to the server */
+  addProposition(prop: Proposition): Observable<Proposition> {
+    return this.http.post<Proposition>(this.propositionsUrl, prop, this.httpOptions).pipe(
+      tap((proposition: Proposition) => this.log(`created proposition resto=${proposition.resto}`)),
+      catchError(this.handleError<any>('createProposition'))
+    )
+  }
+
+  /** DELETE: delete the proposition from the server */
+  deleteProposition (prop: Proposition | string): Observable<Proposition> {
+    const id = typeof prop === 'string' ? prop : prop.id;
+    const url = `${this.propositionsUrl}/${id}`;
+
+    return this.http.delete<Proposition>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted proposition id=${id}`)),
+      catchError(this.handleError<Proposition>('deleteProposition'))
+    );
   }
 
   /** Log a PropositionService message with the MessageService */
