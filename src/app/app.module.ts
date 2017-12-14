@@ -17,6 +17,7 @@ import { MessageService } from './message.service';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { PropositionSearchComponent } from './proposition-search/proposition-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     DashboardComponent,
     PropositionsComponent,
     PropositionDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    PropositionSearchComponent
   ],
   imports: [
     BrowserModule,

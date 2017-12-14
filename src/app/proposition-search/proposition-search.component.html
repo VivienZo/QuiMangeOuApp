@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Proposition Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let proposition of propositions$ | async" >
+      <a routerLink="/detail/{{proposition.id}}">
+        {{proposition.resto}}
+      </a>
+    </li>
+  </ul>
+</div>

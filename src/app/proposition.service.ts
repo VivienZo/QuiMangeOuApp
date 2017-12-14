@@ -65,6 +65,19 @@ export class PropositionService {
     );
   }
 
+  /* GET propositions whose name contains search term */
+  searchPropositions(term: string): Observable<Proposition[]> {
+    if (!term.trim()) {
+      // if not search term, return empty proposition array.
+      return of([]);
+    }
+    const url = `${this.propositionsUrl}/?resto=${term}`;
+    return this.http.get<Proposition[]>(url).pipe(
+      tap(_ => this.log(`found propositions matching "${term}"`)),
+      catchError(this.handleError<Proposition[]>('searchPropositions', []))
+    );
+  }
+
   /** Log a PropositionService message with the MessageService */
   private log(message: string) {
     this.messageService.add('PropositionService: ' + message);
