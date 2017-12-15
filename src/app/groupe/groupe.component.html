@@ -1,0 +1,15 @@
+<h3>Mon groupe</h3>
+<div>
+  <h4>Création d'un nouveau groupe</h4>
+  <label>Nom du groupe :
+    <input #nomGroupe />
+  </label>
+  <label>E-mail du responsable du groupe :
+      <input #email />
+    </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(nomGroupe.value, email.value); nomGroupe.value=''; email.value=''">
+    Créer
+  </button>
+  <h4>{{confirmationMessage}}</h4>
+</div>

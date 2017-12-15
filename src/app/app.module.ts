@@ -12,12 +12,14 @@ import { PropositionsComponent } from './propositions/propositions.component';
 import { PropositionDetailComponent } from './proposition-detail/proposition-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 
+import { GroupeService } from './groupe.service';
 import { PropositionService } from './proposition.service';
 import { MessageService } from './message.service';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { PropositionSearchComponent } from './proposition-search/proposition-search.component';
+import { GroupeComponent } from './groupe/groupe.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { PropositionSearchComponent } from './proposition-search/proposition-sea
     PropositionsComponent,
     PropositionDetailComponent,
     MessagesComponent,
-    PropositionSearchComponent
+    PropositionSearchComponent,
+    GroupeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { PropositionSearchComponent } from './proposition-search/proposition-sea
     )
   ],
   providers: [
+    GroupeService,
     PropositionService,
     MessageService
   ],
